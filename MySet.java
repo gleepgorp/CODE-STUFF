@@ -23,46 +23,54 @@ public class MySet implements Set
       return count == items.length;
   }
   
-  public void add(int item)
-  {
-      if(!isFull())
-         items[count++] = item;
-  }
-
+	/*
+	 * public void add(int item) { if(!isFull()) items[count++] = item; }
+	 */
+  
+  public void add(int item) {
+	    for (int i = 0; i < count; i++) {
+	        if (items[i] == item) {
+	            return; // item already exists, do not add it again
+	        }
+	    }
+	    if (!isFull()) {
+	        items[count++] = item;
+	    }
+	}
+  
 //UNION////////////////////////////
-  public Set union(Set set)
-  {
-      MySet union = new MySet();
-      MySet argSet = (MySet)set;
-   
-      for(int i = 0; i < count; i++)
-      union.add(items[i]);
-      
-         for(int i = 0; i < argSet.count; i++)
-            if(!union.isFound(argSet.items[i]))
-            union.add(argSet.items[i]);
-            return union;
-  }
+  public Set union(Set set) {
+	    MySet union = new MySet();
+	    MySet argSet = (MySet) set;
+
+	    for (int i = 0; i < count; i++) {
+	        union.add(items[i]);
+	    }
+
+	    for (int i = 0; i < argSet.count; i++) {
+	        union.add(argSet.items[i]);
+	    }
+
+	    return union;
+	}
   
 //INTERSECTION//////////////////////
-   public Set intersection(Set set)
-   {
+  public Set intersection(Set set)
+  {
       MySet intersection = new MySet();
       MySet argSet = (MySet)set;
-      
+
       for (int i = 0; i < count; i++) 
       {
-          if (argSet.isFound(items[i]) == argSet.isFound(items[i])) 
+          if (argSet.isFound(items[i])) 
           {
-              intersection.add(items[i]);
-          }
-          else
-          {
-               intersection.add(items[i]);    
+              if (!intersection.isFound(items[i])) {
+                  intersection.add(items[i]);
+              }
           }
       }
       return intersection;  
-   }
+  }
    
 //DIFFERENCE A-B//////////////////////
    public Set differenceA(Set set) 
@@ -99,16 +107,19 @@ public class MySet implements Set
  //SUBSET//////////////////////////////
    public boolean isSubset(Set set) 
    {
-	   MySet argSet = (MySet) set;
-	   for (int i = 0; i < count; i++) 
-	   {
-	      if (!argSet.isFound(items[i])) 
-	      {
-	         return false;
-	      }
-	   }
-	   return true;
-	}
+       MySet argSet = (MySet) set;
+       if (count >= argSet.count) {
+           return false;
+       }
+       for (int i = 0; i < count; i++) 
+       {
+           if (!argSet.isFound(items[i])) 
+           {
+               return false;
+           }
+       }
+       return true;
+   }
      
  //CARDINALITY/////////////////////////
    public int cardinality()
@@ -167,15 +178,16 @@ public class MySet implements Set
   {
       MySet setA = new MySet();
       MySet setB = new MySet();
+      setA.add(5);
       setA.add(6);
-      setA.add(1);
-      setA.add(3);
-      setA.add(5);
-      setA.add(5);
+      setA.add(4);
+      setA.add(2);
    
-      setB.add(1);
       setB.add(5);
+      setB.add(8);
+      setB.add(9);
       setB.add(2);
+      setB.add(3);
       
       System.out.println("set A contains: " + setA);
       System.out.println("set B contains: " + setB +"\n");
