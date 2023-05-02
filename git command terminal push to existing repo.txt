@@ -1,0 +1,8 @@
+git init
+git remote add origin <your-github-repository-url>
+----if commit to new branch----
+git checkout -b new-branch-name
+----if not skip this line------
+git add .
+git commit -m "Message in committing"
+git push -u origin new-branch-name
